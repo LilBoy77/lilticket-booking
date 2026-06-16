@@ -435,7 +435,14 @@ export async function handleXenditWebhook(request, response, next) {
     const payment = await getWebhookPayment(client, request.body);
 
     if (!payment) {
-      throw createHttpError(404, "Pembayaran tidak ditemukan");
+      await client.query("COMMIT");
+      transactionStarted = false;
+
+      response.status(200).json({
+        ignored: true,
+        message: "Webhook diterima, tetapi invoice tidak ditemukan. Diabaikan.",
+      });
+      return;
     }
 
     if (PAID_XENDIT_STATUSES.includes(xenditStatus)) {
