@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wp-bg: #160405;
+  --wp-burgundy: #260707;
+  --wp-surface: #310b0b;
+  --wp-surface-strong: #3c0f0f;
+  --wp-accent: #5c1717;
+  --wp-cta: #ff4f45;
+  --wp-cta-hover: #ff6b5f;
+  --wp-cream: #fff8f2;
+  --wp-cream-muted: #f4e7dc;
+  --wp-text: #fff7ef;
+  --wp-muted: #d8b8a8;
+  --wp-card-text: #1f1414;
+  --wp-card-muted: #6f5148;
+  --wp-border: rgba(255, 95, 80, 0.22);
+  --wp-border-soft: rgba(255, 248, 242, 0.1);
+  --cr-bg: var(--wp-bg);
+  --cr-bg-deep: #090202;
+  --cr-surface: var(--wp-surface);
+  --cr-surface-strong: var(--wp-surface-strong);
+  --cr-accent: var(--wp-accent);
+  --cr-gold: var(--wp-cta);
+  --cr-gold-soft: var(--wp-muted);
+  --cr-gold-muted: #c99a88;
+  --cr-text: var(--wp-text);
+  --cr-border: var(--wp-border);
+  --cr-border-strong: rgba(255, 95, 80, 0.34);
+  color: var(--cr-text);
+  background: var(--cr-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Manrope", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 95, 80, 0.09), transparent 30rem),
+    radial-gradient(circle at 88% 12%, rgba(92, 23, 23, 0.3), transparent 34rem),
+    linear-gradient(145deg, var(--wp-bg) 0%, var(--wp-burgundy) 48%, #080101 100%);
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-primary-600 bg-primary-600 px-5 py-3 text-sm font-extrabold text-warm-cardText shadow-md shadow-black/20 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-secondary hover:shadow-lg hover:shadow-primary-600/15 focus:outline-none focus:ring-2 focus:ring-primary-600/25 focus:ring-offset-2 focus:ring-offset-warm-bg disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-primary-600;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-warm-surface/70 px-5 py-3 text-sm font-semibold text-muted shadow-sm shadow-black/10 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-primary-500/40 hover:bg-warm-accent/55 hover:text-warm-text hover:shadow-md hover:shadow-primary-600/10 focus:outline-none focus:ring-2 focus:ring-primary-600/20 focus:ring-offset-2 focus:ring-offset-warm-bg disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-line bg-warm-burgundy/85 px-4 py-3 text-sm text-warm-text outline-none transition-colors duration-200 placeholder:text-muted/60 hover:border-primary-500/40 hover:bg-warm-surface focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-600/20;
+  }
+
+  .surface-card {
+    @apply rounded-2xl border border-line bg-warm-surface/80 shadow-lg shadow-black/20 backdrop-blur transition-colors duration-200 ease-out;
+  }
+
+  .glass-card {
+    @apply rounded-3xl border border-line bg-warm-surface/60 shadow-lg shadow-black/25 backdrop-blur-xl transition-colors duration-200 ease-out;
+  }
+
+  .cream-card {
+    @apply rounded-3xl border border-warm-cream/70 bg-warm-cream text-warm-cardText shadow-lg shadow-black/20 transition-colors duration-200 ease-out;
+  }
+
+  .interactive-card {
+    @apply transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-primary-500/40 hover:shadow-[0_0_30px_rgba(255,79,69,0.12)];
+  }
+
+  .page-crimson {
+    @apply bg-soft text-warm-text;
+  }
+
+  .border-glow {
+    @apply border border-line shadow-md shadow-black/20;
+  }
+
+  .badge-category {
+    @apply inline-flex items-center rounded-full border border-line bg-warm-accent/35 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+
+  .status-paid {
+    @apply rounded-full bg-success/10 px-3 py-1 text-xs font-semibold text-success;
+  }
+
+  .status-pending {
+    @apply rounded-full bg-warning/10 px-3 py-1 text-xs font-semibold text-warning;
+  }
+
+  .status-failed {
+    @apply rounded-full bg-danger/10 px-3 py-1 text-xs font-semibold text-danger;
+  }
+
+  /* Premium Ticket Card Styles */
+  .premium-ticket {
+    @apply relative overflow-visible rounded-2xl border border-line bg-warm-surface/80 shadow-lg shadow-black/20 backdrop-blur-xl transition-all duration-300 ease-out;
+  }
+
+  .premium-ticket:hover {
+    @apply -translate-y-1 border-primary-500/60 shadow-[0_18px_45px_rgba(255,79,69,0.16)];
+  }
+
+  /* Cutout circle style */
+  .ticket-cutout-circle {
+    @apply absolute w-6 h-6 rounded-full bg-soft border border-line z-10 pointer-events-none;
+  }
+
+  /* Separation line */
+  .ticket-dashed-divider {
+    @apply border-t-2 border-dashed border-line/50 w-full lg:border-t-0 lg:border-l-2 lg:h-full lg:w-0;
+  }
+
+  /* Ribbon accent for MyTickets list items */
+  .ticket-ribbon-accent {
+    @apply absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-primary-600 to-secondary rounded-l-2xl transition-all duration-300;
+  }
+
+  .premium-ticket:hover .ticket-ribbon-accent {
+    @apply w-2.5 shadow-[2px_0_15px_rgba(255,107,95,0.6)];
+  }
+
+  /* QR Code frame glow on hover */
+  .qr-container-glow {
+    @apply transition-all duration-300 border border-primary-200 bg-white p-4 shadow-sm shadow-primary-600/10;
+  }
+
+  .premium-ticket:hover .qr-container-glow {
+    @apply scale-105 border-primary-500 shadow-[0_0_20px_rgba(255,79,69,0.3)] bg-white/95;
+  }
+
+  /* Smooth tilt effect for ticket icons */
+  .ticket-icon-tilt {
+    @apply transition-transform duration-300;
+  }
+
+  .premium-ticket:hover .ticket-icon-tilt {
+    @apply rotate-6 scale-110 text-secondary;
+  }
+}
+
+@layer utilities {
+  .text-navy,
+  .text-dark {
+    color: var(--wp-text);
+  }
+
+  .text-muted,
+  .text-sky,
+  .text-slate-600 {
+    color: var(--cr-gold-soft);
+  }
+
+  .text-primary-600 {
+    color: var(--wp-cta-hover);
+  }
+
+  .text-primary-700 {
+    color: var(--wp-muted);
+  }
+
+  .bg-white,
+  .bg-white\/80,
+  .bg-white\/95 {
+    background-color: rgba(49, 11, 11, 0.82);
+  }
+
+  .bg-blue-50,
+  .bg-slate-100,
+  .hover\:bg-blue-50:hover,
+  .hover\:bg-blue-50\/40:hover {
+    background-color: rgba(92, 23, 23, 0.42);
+  }
+
+  .bg-slate-950\/40 {
+    background-color: rgba(8, 1, 1, 0.72);
+  }
+
+  .hover\:bg-white\/60:hover {
+    background-color: rgba(92, 23, 23, 0.52);
+  }
+
+  .bg-primary-600,
+  .bg-secondary {
+    color: var(--wp-card-text);
+  }
+
+  .cream-card .text-navy,
+  .cream-card .text-dark {
+    color: var(--wp-card-text);
+  }
+
+  .cream-card .text-muted {
+    color: var(--wp-card-muted);
+  }
+
+  .cream-card .text-primary-600,
+  .cream-card .text-primary-700 {
+    color: var(--wp-accent);
+  }
+
+  .cream-card .badge-category {
+    border-color: rgba(92, 23, 23, 0.18);
+    background-color: rgba(255, 95, 80, 0.1);
+    color: var(--wp-accent);
+  }
+
+  .cream-card .bg-white,
+  .cream-card .bg-soft,
+  .cream-card .bg-primary-50 {
+    background-color: rgba(244, 231, 220, 0.72);
+  }
+
+  .cream-card .border-line {
+    border-color: rgba(92, 23, 23, 0.14);
+  }
+
+  .from-white {
+    --tw-gradient-from: var(--cr-bg) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgba(22, 4, 5, 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+
+  .via-white {
+    --tw-gradient-to: rgba(38, 7, 7, 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), rgba(38, 7, 7, 0.92) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  }
+
+  .to-white {
+    --tw-gradient-to: #080101 var(--tw-gradient-to-position);
+  }
+}

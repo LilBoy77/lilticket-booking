@@ -1,0 +1,17 @@
+{
+  "name": "lilticket",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "corepack pnpm build:frontend",
+    "dev:frontend": "corepack pnpm --dir frontend dev",
+    "dev:backend": "corepack pnpm --dir backend dev",
+    "build:frontend": "corepack pnpm --dir frontend build",
+    "tunnel": "ngrok http --domain=rifling-cackle-thigh.ngrok-free.dev 5055",
+    "dev:tunnel": "concurrently \"corepack pnpm dev:backend\" \"corepack pnpm tunnel\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}
