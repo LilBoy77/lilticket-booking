@@ -32,6 +32,7 @@ export function getAuthCookieOptions() {
   return {
     httpOnly: true,
     maxAge: getJwtMaxAge(),
+    path: "/",
     sameSite: isProduction ? "none" : "lax",
     secure: isProduction,
   };
@@ -42,6 +43,7 @@ export function getClearAuthCookieOptions() {
 
   return {
     httpOnly: true,
+    path: "/",
     sameSite: isProduction ? "none" : "lax",
     secure: isProduction,
   };
